@@ -1,22 +1,20 @@
-# Use official OpenJDK 17 image
 FROM eclipse-temurin:17-jdk-jammy
 
-# Set working directory
 WORKDIR /app
 
-# First copy the Maven Wrapper files
-COPY mvnw .
-COPY .mvn .mvn
+# Copy from the sudoku-backend subdirectory
+FROM eclipse-temurin:17-jdk-jammy
 
-# Then copy the rest of the files
-COPY pom.xml .
-COPY src ./src
+WORKDIR /app
 
-# Build the application
+# Copy files from nested structure
+COPY ./Desktop/sudoku-backend/mvnw .
+COPY ./Desktop/sudoku-backend/.mvn .mvn
+COPY ./Desktop/sudoku-backend/pom.xml .
+COPY ./Desktop/sudoku-backend/src ./src
+
 RUN chmod +x mvnw && ./mvnw clean package -DskipTests
 
-# Expose the port your app runs on
 EXPOSE 8080
 
-# Run the application
 CMD ["java", "-jar", "target/sudoku-backend-0.0.1-SNAPSHOT.jar"]

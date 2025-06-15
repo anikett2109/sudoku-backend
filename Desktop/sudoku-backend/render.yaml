@@ -2,9 +2,9 @@ services:
   - type: web
     name: sudoku-backend
     runtime: docker
-    build:
-      dockerfile: Dockerfile
     env: docker
+    build:
+      dockerfile: Desktop/sudoku-backend/Dockerfile
     envVars:
       - key: SPRING_PROFILES_ACTIVE
         value: prod

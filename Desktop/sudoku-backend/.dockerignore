@@ -1,5 +1,5 @@
-target/
 .git
 .gitignore
-Dockerfile
-README.md
+Desktop/sudoku-backend/target/
+*.iml
+.idea
