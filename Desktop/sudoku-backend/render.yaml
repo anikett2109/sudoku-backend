@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: sudoku-backend
+    runtime: docker
+    build:
+      dockerfile: Dockerfile
+    env: docker
+    envVars:
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod
+    port: 8080
